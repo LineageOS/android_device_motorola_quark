@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5ac665da_f52f2df4",
+        "filename": "cmactions/src/org/cyanogenmod/cmactions/CMActionsService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 6186
+      },
+      "writtenOn": "2015-03-30T08:35:24Z",
+      "side": 1,
+      "message": "I don\u0027t intend to disable/enable it with screen on/off, you can send gestures also with screen on as well (i.e. mute the ringer if you get sms / call etc.).",
+      "parentUuid": "5ac665da_35038575",
+      "revId": "c7c59d92691e9956592e51ee11342dc4b7f477ab",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac665da_55fe016c",
         "filename": "cmactions/src/org/cyanogenmod/cmactions/CMActionsService.java",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2015-03-30T07:59:03Z",
       "side": 1,
       "message": "Any reason that you are leaving it enabled the entire time?  In my version I just enabled/disabled it (although I commented that out) along with the other sensors.",
+      "revId": "c7c59d92691e9956592e51ee11342dc4b7f477ab",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac665da_953fd924",
+        "filename": "cmactions/src/org/cyanogenmod/cmactions/CMActionsService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 6186
+      },
+      "writtenOn": "2015-03-30T08:35:24Z",
+      "side": 1,
+      "message": "Yes, intentionally, replied above.",
+      "parentUuid": "5ac665da_55fe016c",
       "revId": "c7c59d92691e9956592e51ee11342dc4b7f477ab",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
