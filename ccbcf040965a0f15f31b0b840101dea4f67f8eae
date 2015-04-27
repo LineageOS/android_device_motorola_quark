@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7fb54a_4302ed3f",
+        "filename": "cmactions/src/com/cyanogenmod/settings/device/DozeManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2015-04-27T03:20:21Z",
+      "side": 1,
+      "message": "tabs",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 4
+      },
+      "revId": "ccbcf040965a0f15f31b0b840101dea4f67f8eae",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
