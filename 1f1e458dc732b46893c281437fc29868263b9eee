@@ -16,6 +16,24 @@
       "revId": "1f1e458dc732b46893c281437fc29868263b9eee",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7fb54a_bed8271f",
+        "filename": "overlay/frameworks/base/packages/SystemUI/res/values/config.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 6186
+      },
+      "writtenOn": "2015-05-02T10:06:47Z",
+      "side": 1,
+      "message": "I see. I\u0027ll try 180s as well, let\u0027s see how that works for me.",
+      "parentUuid": "da7fb54a_beaae76e",
+      "revId": "1f1e458dc732b46893c281437fc29868263b9eee",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
