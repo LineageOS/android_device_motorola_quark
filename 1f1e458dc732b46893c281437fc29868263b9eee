@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7fb54a_beaae76e",
+        "filename": "overlay/frameworks/base/packages/SystemUI/res/values/config.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 6351
+      },
+      "writtenOn": "2015-05-02T08:13:46Z",
+      "side": 1,
+      "message": "FYI, I\u0027m still not sure about the 180s.  I put it in there to see what kind of reaction I got and I haven\u0027t gotten any which makes it rather inconclusive.",
+      "revId": "1f1e458dc732b46893c281437fc29868263b9eee",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
