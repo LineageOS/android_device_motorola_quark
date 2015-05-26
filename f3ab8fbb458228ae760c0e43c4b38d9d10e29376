@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a8ec9b2_de6d05ce",
+        "filename": "camera/CameraWrapper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 6351
+      },
+      "writtenOn": "2015-05-26T20:46:16Z",
+      "side": 1,
+      "message": "FYI, this is a pretty nasty hack and Ethan pointed out on my commit that doing so could cause a loss of frame-rate (but my testing didn\u0027t see that) because there\u0027s a good reason that the vendor blobs are forcing the more efficient nv12-venus format...",
+      "revId": "f3ab8fbb458228ae760c0e43c4b38d9d10e29376",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
