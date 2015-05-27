@@ -16,6 +16,24 @@
       "revId": "f3ab8fbb458228ae760c0e43c4b38d9d10e29376",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a8ec9b2_de0ee5e4",
+        "filename": "camera/CameraWrapper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 6186
+      },
+      "writtenOn": "2015-05-27T02:09:31Z",
+      "side": 1,
+      "message": "Nexus 6 is defaulting to yuv420sp, but in the HAL array it looks like nv12-venus variable has a \"QC_\" prefix.",
+      "parentUuid": "7a8ec9b2_de6d05ce",
+      "revId": "f3ab8fbb458228ae760c0e43c4b38d9d10e29376",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
