@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f2577a7_05948636",
+        "filename": "audio/audio_policy.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 6315
+      },
+      "writtenOn": "2015-10-29T14:41:17Z",
+      "side": 1,
+      "message": "This is, what the reverted commit in  http://review.cyanogenmod.org/#/c/115787/ added?",
+      "range": {
+        "startLine": 40,
+        "startChar": 34,
+        "endLine": 40,
+        "endChar": 57
+      },
+      "revId": "d22a659bf1aaaa3ad91d08eb254b0216c60ecd81",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
