@@ -6,5 +6,9 @@
   {
     "repository": "android_kernel_motorola_apq8084",
     "target_path": "kernel/motorola/apq8084"
+  },
+  {
+    "repository": "android_packages_resources_devicesettings",
+    "target_path": "packages/resources/devicesettings"
   }
 ]
