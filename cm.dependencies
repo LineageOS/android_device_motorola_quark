@@ -8,6 +8,10 @@
     "target_path": "kernel/motorola/apq8084"
   },
   {
+    "repository": "android_packages_resources_devicesettings",
+    "target_path": "packages/resources/devicesettings"
+  },
+  {
     "repository": "android_external_connectivity",
     "target_path": "external/connectivity"
   }
