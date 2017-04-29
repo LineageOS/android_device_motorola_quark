@@ -21,9 +21,9 @@ $(call inherit-product, vendor/motorola/quark/quark-vendor.mk)
 LOCAL_PATH := device/motorola/quark
 
 # Screen density
-PRODUCT_AAPT_CONFIG := normal
-PRODUCT_AAPT_PREF_CONFIG := xxxhdpi
-PRODUCT_AAPT_PREBUILT_DPI := 560dpi xxhdpi xhdpi hdpi
+PRODUCT_AAPT_CONFIG := normal large xlarge hdpi xhdpi
+PRODUCT_AAPT_PREF_CONFIG := 560dpi
+PRODUCT_AAPT_PREBUILT_DPI := 560dpi xxxhdpi xxhdpi xhdpi hdpi
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 2560
@@ -59,11 +59,23 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml \
     frameworks/native/data/etc/com.nxp.mifare.xml:system/etc/permissions/com.nxp.mifare.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
-    frameworks/native/data/etc/android.hardware.ethernet.xml:system/etc/permissions/android.hardware.ethernet.xml
+    frameworks/native/data/etc/android.hardware.opengles.aep.xml:system/etc/permissions/android.hardware.opengles.aep.xml \
+    frameworks/native/data/etc/android.hardware.vulkan.level-0.xml:system/etc/permissions/android.hardware.vulkan.level.xml \
+    frameworks/native/data/etc/android.hardware.vulkan.version-1_0_3.xml:system/etc/permissions/android.hardware.vulkan.version.xml \
+    frameworks/native/data/etc/android.software.midi.xml:system/etc/permissions/android.software.midi.xml \
+    frameworks/native/data/etc/android.software.webview.xml:system/etc/permissions/android.software.webview.xml \
+    frameworks/native/data/etc/android.software.voice_recognizers.xml:system/etc/permissions/android.software.voice_recognizers.xml
 
-$(call inherit-product, frameworks/native/build/phone-xxxhdpi-3072-dalvik-heap.mk)
+# Dalvik.vm size adapted for quark
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.heapstartsize=8m \
+    dalvik.vm.heapgrowthlimit=256m \
+    dalvik.vm.heapsize=512m \
+    dalvik.vm.heaptargetutilization=0.75 \
+    dalvik.vm.heapminfree=512k \
+    dalvik.vm.heapmaxfree=8m
 
-$(call inherit-product-if-exists, frameworks/native/build/phone-xxxhdpi-3072-hwui-memory.mk)
+$(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-3072-hwui-memory.mk)
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -123,9 +135,6 @@ PRODUCT_PACKAGES += \
     regdbdump \
     regulatory.bin
 
-# Dexopt
-$(call add-product-dex-preopt-module-config,MotoSignatureApp,disable)
-
 # Display
 PRODUCT_PACKAGES += \
     copybit.apq8084 \
@@ -134,10 +143,6 @@ PRODUCT_PACKAGES += \
     libgenlock \
     memtrack.apq8084
 
-# Gello
-PRODUCT_PACKAGES += \
-    Gello
-
 # IDC
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/idc/atmel_mxt_ts.idc:system/usr/idc/atmel_mxt_ts.idc
@@ -145,7 +150,8 @@ PRODUCT_COPY_FILES += \
 # IPv6 tethering
 PRODUCT_PACKAGES += \
     ebtables \
-    ethertypes
+    ethertypes \
+    libqsap_sdk
 
 # IRSC
 PRODUCT_COPY_FILES += \
@@ -251,7 +257,6 @@ PRODUCT_PACKAGES += \
 
 # Wifi
 PRODUCT_PACKAGES += \
-    dhcpcd.conf \
     hostapd \
     wpa_supplicant \
     wpa_supplicant.conf

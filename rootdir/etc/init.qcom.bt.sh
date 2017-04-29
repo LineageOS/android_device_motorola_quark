@@ -28,7 +28,6 @@
 
 #Read the arguments passed to the script
 config="$1"
-
 BLUETOOTH_SLEEP_PATH=/proc/bluetooth/sleep/proto
 LOG_TAG="qcom-bluetooth"
 LOG_NAME="${0}:"
@@ -164,7 +163,7 @@ config_bt ()
            setprop ro.qualcomm.bt.hci_transport smd
        elif [ "$btsoc" = "rome" ]
        then
-           setprop ro.bluetooth.hfp.ver 1.6
+#          setprop ro.bluetooth.hfp.ver 1.6
            setprop ro.bluetooth.dun true
        fi
        ;;

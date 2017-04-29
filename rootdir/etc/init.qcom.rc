@@ -32,8 +32,8 @@ on early-init
     mount debugfs debugfs /sys/kernel/debug
     chown system system /sys/kernel/debug/kgsl/proc
 
-    # Set boot up stage I/O scheduler
-    write /sys/block/mmcblk0/queue/scheduler deadline
+    # Set boot up stage I/O scheduler		
+    write /sys/block/mmcblk0/queue/scheduler noop
 
     # Set permissions for persist partition
     mkdir /persist 0771 system system
@@ -45,8 +45,7 @@ on early-init
     mkdir /firmware 0771 system system
 
 on init
-    # Support legacy paths
-    symlink /sdcard /sdcard
+
     symlink /sdcard /storage/sdcard0
 
     # pstore
@@ -159,10 +158,6 @@ on post-fs-data
     chown system system /sys/devices/virtual/graphics/fb0/rgb
     chmod 0660 /sys/devices/virtual/graphics/fb0/rgb
 
-    # Vibrator settings
-    chown system system /sys/vibrator/pwmvalue
-    chmod 0644 /sys/vibrator/pwmvalue
-
     setprop vold.post_fs_data_done 1
 
     # Create a folder for SRS to be able to create a usercfg file
@@ -258,9 +253,8 @@ on boot
     mkdir /dev/socket/qmux_gps 0770 gps gps
     chmod 2770 /dev/socket/qmux_gps
 
-#   Define TCP buffer sizes for various networks
-#   ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
-    setprop net.tcp.buffersize.wifi    524288,6291456,8291456,524288,6291456,8291456
+# Low Brightness at boot
+    write /sys/class/leds/lcd-backlight/brightness 63
 
     setprop ro.telephony.call_ring.multiple false
 
@@ -272,19 +266,6 @@ on boot
     # For setting tcp delayed ack
     chown system system /sys/kernel/ipv4/tcp_delack_seg
     chown system system /sys/kernel/ipv4/tcp_use_userconfig
-
-#   Define TCP buffer sizes for various networks
-#   ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
-    setprop net.tcp.buffersize.default 4096,87380,524288,4096,16384,110208
-    setprop net.tcp.buffersize.lte     2097152,4194304,8388608,1048576,3145728,4194304
-    setprop net.tcp.buffersize.umts    4094,87380,110208,4096,16384,110208
-    setprop net.tcp.buffersize.hspa    4094,87380,1220608,4096,16384,1220608
-    setprop net.tcp.buffersize.hsupa   4094,87380,1220608,4096,16384,1220608
-    setprop net.tcp.buffersize.hsdpa   4094,87380,1220608,4096,16384,1220608
-    setprop net.tcp.buffersize.hspap   4094,87380,1220608,4096,16384,1220608
-    setprop net.tcp.buffersize.edge    4093,26280,35040,4096,16384,35040
-    setprop net.tcp.buffersize.gprs    4092,8760,11680,4096,8760,11680
-    setprop net.tcp.buffersize.evdo    4094,87380,524288,4096,16384,262144
 
 #   Define TCP delayed ack settings for WiFi & LTE
     setprop net.tcp.delack.default     1
@@ -298,28 +279,6 @@ on boot
 #   Increased technology maximums should be reflected here.
     write /proc/sys/net/core/rmem_max  8388608
     write /proc/sys/net/core/wmem_max  8388608
-
-    #To allow interfaces to get v6 address when tethering is enabled
-    write /proc/sys/net/ipv6/conf/rmnet0/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet1/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet2/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet3/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet4/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet5/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet6/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet7/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_sdio0/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_sdio1/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_sdio2/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_sdio3/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_sdio4/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_sdio5/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_sdio6/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_sdio7/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_usb0/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_usb1/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_usb2/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_usb3/accept_ra 2
 
     # To prevent out of order acknowledgements from making
     # connection tracking to treat them as not belonging to
@@ -381,9 +340,6 @@ on boot
     chmod 0440 /sys/class/graphics/fb0/frame_counter
     chown system system /sys/class/graphics/fb0/frame_counter
 
-    # Change ownership for HBM control
-    chown system system /sys/class/graphics/fb0/hbm
-
     # Change the ownership of touch screen files for system
     chown system system /sys/bus/i2c/drivers/atmel_mxt_ts/1-004a/drv_irq
     chown system system /sys/bus/i2c/drivers/atmel_mxt_ts/1-004a/reset
@@ -405,9 +361,6 @@ on boot
     write /sys/bus/msm_subsys/devices/subsys4/restart_level related
 
     insmod /system/lib/modules/touchx.ko
-
-    # ESDFS
-    chown system system /proc/fs/esdfs/packages
 
 on property:sys.boot_completed=1
 
@@ -437,9 +390,6 @@ on property:persist.debug.trace=1
     write /sys/bus/coresight/devices/coresight-etm3/enable 1
     write /sys/module/coresight_event/parameters/event_abort_enable 1
 
-on property:init.svc.wpa_supplicant=stopped
-    stop dhcpcd
-
 on property:ro.bluetooth.ftm_enabled=true
     start ftmd
 
@@ -468,14 +418,23 @@ service atvc /system/bin/dbvc_atvc_property_set
     oneshot
 
 service batt_health /system/bin/batt_health
-    class main
+    class late_start
     user mot_pwric
-    group mot_pwric net_admin log
+    group log mot_pwric cache net_admin
+    disabled
 
-service thermal-engine /system/bin/thermal-engine
+on property:sys.boot_completed=1
+   start batt_health
+
+service thermal-engine /system/vendor/bin/thermal-engine
     class main
     user root
     group root
+
+service thermal-com /system/vendor/bin/thermal-engine --minimode
+    class main
+    user root
+    disabled
 
 service time_daemon /system/bin/time_daemon
     class late_start
@@ -487,7 +446,7 @@ service qseecomd /system/bin/qseecomd
     user root
     group root
 
-service mpdecision /system/bin/mpdecision --avg_comp
+service mpdecision /system/bin/mpdecision --avg_comp --min_cores=4
     user root
     disabled
 
@@ -520,7 +479,7 @@ service adspd /system/bin/adspd /dev/ttyHS3
 
 #start Sensor daemon
 service stm401 /system/bin/stm401 boot
-    class disabled
+    disabled
     user compass
     group compass misc input
     oneshot
@@ -543,7 +502,7 @@ service mmi-touch-sh /system/bin/sh /init.mmi.touch.sh atmel
     user root
     oneshot
 
-service_redefine ril-daemon /system/bin/rild
+service ril-daemon /system/bin/rild
     class main
     socket rild stream 660 root radio
     socket rild-debug stream 660 radio system
@@ -563,11 +522,6 @@ service irsc_util /system/bin/irsc_util "/etc/sec_config"
 service rmt_storage /system/bin/rmt_storage
     class core
     user root
-
-service rfs_access /system/bin/rfs_access
-   class core
-   user system
-   group system net_raw
 
 on property:wc_transport.start_hci=true
     start start_hci_filter
@@ -615,6 +569,7 @@ service qmuxd /system/bin/qmuxd
 
 service netmgrd /system/bin/netmgrd
     class main
+    user root
     group radio
 
 # Adjust socket buffer to enlarge TCP receive window for high bandwidth
@@ -652,67 +607,6 @@ service wpa_supplicant /system/bin/wpa_supplicant \
     disabled
     oneshot
 
-service dhcpcd_wlan0 /system/bin/dhcpcd -aABDKL
-    class late_start
-    disabled
-    oneshot
-
-service dhcpcd_p2p /system/bin/dhcpcd -ABKLG
-    class late_start
-    disabled
-    oneshot
-
-service iprenew_wlan0 /system/bin/dhcpcd -n
-    class late_start
-    disabled
-    oneshot
-
-service iprenew_p2p /system/bin/dhcpcd -n
-    class late_start
-    disabled
-    oneshot
-
-# DHCP service for Ethernet
-service dhcpcd_eth0 /system/bin/dhcpcd -aABDKL
-    class late_start
-    disabled
-    oneshot
-
-service iprenew_eth0 /system/bin/dhcpcd -n
-    class late_start
-    disabled
-    oneshot
-
-service dhcpcd_bt-pan /system/bin/dhcpcd -BKLG
-    class late_start
-    disabled
-    oneshot
-
-service iprenew_bt-pan /system/bin/dhcpcd -n
-    class late_start
-    disabled
-    oneshot
-
-service dhcpcd_bnep0 /system/bin/dhcpcd -BKLG
-    disabled
-    oneshot
-
-service dhcpcd_bnep1 /system/bin/dhcpcd -BKLG
-    disabled
-    oneshot
-
-service dhcpcd_bnep2 /system/bin/dhcpcd -BKLG
-    disabled
-    oneshot
-
-service dhcpcd_bnep3 /system/bin/dhcpcd -BKLG
-    disabled
-    oneshot
-
-service dhcpcd_bnep4 /system/bin/dhcpcd -BKLG
-    disabled
-    oneshot
-
 service gpsone_daemon /system/bin/gpsone_daemon
     class late_start
     user gps
@@ -734,3 +628,7 @@ service atfwd /system/bin/ATFWD-daemon
     class late_start
     user system
     group system radio
+
+service cnd /system/bin/cnd
+    class late_start
+    socket cnd stream 660 root inet
