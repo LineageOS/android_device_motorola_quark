@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.cyanogenmod.settings.device;
 
 import android.app.AlertDialog;
@@ -22,23 +21,29 @@ import android.os.Bundle;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.provider.Settings;
+import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceCategory;
+import android.support.v7.preference.Preference.OnPreferenceChangeListener;
 import android.support.v14.preference.PreferenceFragment;
+import android.support.v14.preference.SwitchPreference;
 
-public class TouchscreenGesturePreferenceFragment extends PreferenceFragment {
+public class TouchscreenGesturePreferenceFragment extends PreferenceFragment implements
+Preference.OnPreferenceChangeListener {
+
     private static final String CATEGORY_AMBIENT_DISPLAY = "ambient_display_key";
-    private SwitchPreference mFlipPref;
+    private static final String SWITCH_AMBIENT_DISPLAY = "ambient_display_switch";
+    private SwitchPreference mFlipPref, mSwitchAmbientDisplay;
     private NotificationManager mNotificationManager;
     private boolean mFlipClick = false;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         addPreferencesFromResource(R.xml.gesture_panel);
-        PreferenceCategory ambientDisplayCat = (PreferenceCategory)
-                findPreference(CATEGORY_AMBIENT_DISPLAY);
-        if (ambientDisplayCat != null) {
-            ambientDisplayCat.setEnabled(CMActionsSettings.isDozeEnabled(getActivity().getContentResolver()));
-        }
+
+        mSwitchAmbientDisplay = (SwitchPreference) findPreference(SWITCH_AMBIENT_DISPLAY);
+        mSwitchAmbientDisplay.setOnPreferenceChangeListener(this);
+
         mNotificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
         mFlipPref = (SwitchPreference) findPreference("gesture_flip_to_mute");
         mFlipPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
@@ -65,6 +70,7 @@ public class TouchscreenGesturePreferenceFragment extends PreferenceFragment {
        if (!mNotificationManager.isNotificationPolicyAccessGranted()) {
            mFlipPref.setChecked(false);
        }
+       updateState();
     }
 
     @Override
@@ -74,8 +80,18 @@ public class TouchscreenGesturePreferenceFragment extends PreferenceFragment {
     }
 
     private void updateState() {
-        if (mNotificationManager.isNotificationPolicyAccessGranted() && mFlipClick) {
+        if (mSwitchAmbientDisplay != null)
+            mSwitchAmbientDisplay.setChecked(CMActionsSettings.isDozeEnabled(getActivity().getContentResolver()));
+        if (mNotificationManager.isNotificationPolicyAccessGranted() && mFlipClick)
             mFlipPref.setChecked(true);
+    }
+
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object objValue) {
+        if (preference == mSwitchAmbientDisplay) {
+            boolean DozeValue = (Boolean) objValue;
+            Settings.Secure.putInt(getActivity().getContentResolver(), Settings.Secure.DOZE_ENABLED, DozeValue ? 1 : 0);
         }
+        return true;
     }
 }
