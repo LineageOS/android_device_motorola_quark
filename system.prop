@@ -19,6 +19,7 @@ ro.qualcomm.bluetooth.sap=false
 camera2.portability.force_api=1
 media.stagefright.legacyencoder=true
 media.stagefright.less-secure=true
+persist.camera.enable_vpu=0
 
 # Display
 ro.qualcomm.cabl=0
