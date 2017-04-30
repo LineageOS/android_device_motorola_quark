@@ -365,6 +365,9 @@ on boot
 
     insmod /system/lib/modules/touchx.ko
 
+on persist.camera.enable_vpu=1
+    setprop persist.camera.enable_vpu 0
+
 on property:sys.boot_completed=1
 
     # Post boot services
