@@ -278,4 +278,5 @@ PRODUCT_COPY_FILES += \
 
 # shims
 PRODUCT_PACKAGES += \
-    libshims_thermal
+    libshims_thermal \
+    libshim_qcopt
