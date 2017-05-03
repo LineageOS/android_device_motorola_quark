@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_cd7906fe",
+        "filename": "mkbootimg.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2017-05-03T22:20:17Z",
+      "side": 0,
+      "message": "killing off this file should be in a separate commit",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 28
+      },
+      "revId": "614f25c60b6a49a830e78b71b1c76a13f7ba1d03",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_ad7ecae2",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2017-05-03T22:20:17Z",
+      "side": 0,
+      "message": "any changes to this file should be in a separate commit",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 28
+      },
+      "revId": "614f25c60b6a49a830e78b71b1c76a13f7ba1d03",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}

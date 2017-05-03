@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_ed1cc2c3",
+        "filename": "lineage.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2017-05-03T22:20:17Z",
+      "side": 1,
+      "message": "s/CM/Lineage/",
+      "range": {
+        "startLine": 3,
+        "startChar": 22,
+        "endLine": 3,
+        "endChar": 24
+      },
+      "revId": "f06633763971a545f83c4e6dbf9767877a9efb1d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
