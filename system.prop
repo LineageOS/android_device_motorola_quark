@@ -66,6 +66,9 @@ persist.rild.nitz_short_ons_3=
 ril.subscription.types=NV,RUIM
 DEVICE_PROVISIONED=1
 
+# Play store
+ro.com.google.clientidbase.gmm=android-motorola
+
 # RmNet Data
 persist.rmnet.data.enable=true
 persist.data.wda.enable=true
