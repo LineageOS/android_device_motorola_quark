@@ -506,7 +506,7 @@ service adspd /system/bin/adspd /dev/ttyHS3
 
 #start Sensor daemon
 service stm401 /system/bin/stm401 boot
-    class disabled
+    disabled
     user compass
     group compass misc input
     oneshot
