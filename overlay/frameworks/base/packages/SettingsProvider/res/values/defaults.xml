@@ -20,4 +20,7 @@
     <!-- Default screen brightness, from 0 to 255.  102 is 40%. -->
     <integer name="def_screen_brightness">90</integer>
     <bool name="def_bluetooth_on">false</bool>
+
+    <!-- Default for Settings.Global.WIFI_SCAN_ALWAYS_AVAILABLE -->
+    <integer name="def_wifi_scan_always_available">0</integer>
 </resources>
