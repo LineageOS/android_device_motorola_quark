@@ -115,7 +115,6 @@ TARGET_POWERHAL_VARIANT := qcom
 TARGET_PROVIDES_LIBLIGHT := true
 
 # Media
-TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 TARGET_USES_ION := true
 # Fix video autoscaling on old OMX decoders
 TARGET_OMX_LEGACY_RESCALING := true
