@@ -444,4 +444,8 @@
     <!-- Boolean indicating whether Hotspot 2.0/Passpoint and ANQP queries is enabled -->
     <bool translatable="false" name="config_wifi_hotspot2_enabled">true</bool>
 
+    <!-- Control whether Night display is available. This should only be enabled on devices
+         with HWC 2.0 or higher. -->
+    <bool name="config_nightDisplayAvailable">true</bool>
+
 </resources>
