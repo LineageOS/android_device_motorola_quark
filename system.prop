@@ -116,6 +116,9 @@ persist.sys.ssr.restart_level=1
 # Time
 persist.timed.enable=true
 
+# tethering Allow without provisioning app
+net.tethering.noprovisioning=true
+
 # USB
 ro.usb.mtp=2ea4
 ro.usb.mtp_adb=2ea5
