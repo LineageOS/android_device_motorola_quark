@@ -395,7 +395,6 @@ on boot
 on property:sys.boot_completed=1
 
     # Post boot services
-    setprop ro.qualcomm.perf.cores_online 2
     rm /data/system/default_values
     start mpdecision
     start batt_health
@@ -474,7 +473,7 @@ service qseecomd /system/bin/qseecomd
     user root
     group root
 
-service mpdecision /system/bin/mpdecision --avg_comp
+service mpdecision /system/bin/mpdecision --avg_comp --min_cores=4
     user root
     disabled
 
