@@ -101,6 +101,9 @@ persist.radio.VT_USE_MDM_TIME=1
 ro.use_data_netmgrd=true
 ro.data.large_tcp_window_size=true
 
+# Reboot Shutdown timeout
+ro.build.shutdown_timeout=7
+
 # Enable UIM VCC feature
 persist.qcril_uim_vcc_feature=1
 
