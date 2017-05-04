@@ -529,7 +529,7 @@ service mmi-touch-sh /system/bin/sh /init.mmi.touch.sh atmel
     user root
     oneshot
 
-service_redefine ril-daemon /system/bin/rild
+service ril-daemon /system/bin/rild
     class main
     socket rild stream 660 root radio
     socket rild-debug stream 660 radio system
