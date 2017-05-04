@@ -45,8 +45,6 @@ on early-init
     mkdir /firmware 0771 system system
 
 on init
-    # Support legacy paths
-    symlink /sdcard /sdcard
     symlink /sdcard /storage/sdcard0
 
     # pstore
