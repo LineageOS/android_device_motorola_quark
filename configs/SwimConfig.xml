@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!--Copyright (c) 2012-2013 Qualcomm Technologies, Inc.  All Rights Reserved. Qualcomm Technologies Proprietary and Confidential.-->
 <SwimConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="SwimConfig.xsd">
  <!--The version of SwimConfig file format-->
@@ -17,6 +17,7 @@
     <InterfaceManager>
       <T_BLACKLIST_BQE units="secs">900</T_BLACKLIST_BQE>
       <T_BLACKLIST_ICD units="secs">900</T_BLACKLIST_ICD>
+      <T_BLACKLIST_CQE units="secs">900</T_BLACKLIST_CQE>
       <BQE>
         <T_passiveBQE units="s">5</T_passiveBQE>
       </BQE>
