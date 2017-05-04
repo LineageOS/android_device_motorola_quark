@@ -255,6 +255,9 @@ on boot
     mkdir /dev/socket/qmux_gps 0770 gps gps
     chmod 2770 /dev/socket/qmux_gps
 
+# Low Brightness at boot
+    write /sys/class/leds/lcd-backlight/brightness 63
+
     setprop ro.telephony.call_ring.multiple false
 
     chmod 0444 /sys/devices/platform/msm_hsusb/gadget/usb_state
