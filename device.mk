@@ -152,7 +152,8 @@ PRODUCT_COPY_FILES += \
 # IPv6 tethering
 PRODUCT_PACKAGES += \
     ebtables \
-    ethertypes
+    ethertypes \
+    libqsap_sdk
 
 # IRSC
 PRODUCT_COPY_FILES += \
