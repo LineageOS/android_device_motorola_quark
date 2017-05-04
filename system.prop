@@ -104,6 +104,9 @@ ro.data.large_tcp_window_size=true
 # Enable UIM VCC feature
 persist.qcril_uim_vcc_feature=1
 
+# Storage
+ro.sys.sdcardfs=true
+
 # SSR
 persist.sys.qc.sub.rdump.max=20
 persist.sys.qc.sub.rdump.on=1
