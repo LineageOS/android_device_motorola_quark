@@ -454,10 +454,15 @@ service batt_health /system/bin/batt_health
     group log mot_pwric cache net_admin
     disabled
 
-service thermal-engine /system/bin/thermal-engine
+service thermal-engine /system/vendor/bin/thermal-engine
     class main
     user root
     group root
+
+service thermal-com /system/vendor/bin/thermal-engine --minimode
+    class main
+    user root
+    disabled
 
 service time_daemon /system/bin/time_daemon
     class late_start
