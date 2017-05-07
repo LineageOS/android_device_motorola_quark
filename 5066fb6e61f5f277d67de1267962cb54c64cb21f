@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_d0c191e5",
+        "filename": "BoardConfig.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 3962
+      },
+      "writtenOn": "2017-05-07T19:58:37Z",
+      "side": 1,
+      "message": "Nope, we don\u0027t ship this (plus the right way to do it is in the kernel anyway)",
+      "range": {
+        "startLine": 45,
+        "startChar": 112,
+        "endLine": 45,
+        "endChar": 147
+      },
+      "revId": "5066fb6e61f5f277d67de1267962cb54c64cb21f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_b0b61589",
+        "filename": "BoardConfig.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 3962
+      },
+      "writtenOn": "2017-05-07T19:58:37Z",
+      "side": 1,
+      "message": "quark should work fine with GCC 4.9 (and even if not, this is the wrong syntax)",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 47
+      },
+      "revId": "5066fb6e61f5f277d67de1267962cb54c64cb21f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
