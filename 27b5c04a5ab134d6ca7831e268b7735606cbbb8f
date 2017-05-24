@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa82b9bf_c8c4a361",
+        "filename": "overlay/frameworks/base/packages/SystemUI/res/values/config.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1053
+      },
+      "writtenOn": "2017-05-24T07:03:16Z",
+      "side": 1,
+      "message": "This has been removed in N",
+      "revId": "27b5c04a5ab134d6ca7831e268b7735606cbbb8f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
