@@ -95,11 +95,11 @@ public class CMActionsService extends IntentService implements ScreenStateNotifi
 
     @Override
     public void screenTurnedOff() {
-        if (mWakeLock.isHeld()) {
-            mWakeLock.release();
-        }
         for (ScreenStateNotifier screenStateNotifier : mScreenStateNotifiers) {
             screenStateNotifier.screenTurnedOff();
+        }
+        if (mWakeLock.isHeld()) {
+            mWakeLock.release();
         }
     }
 
