@@ -21,6 +21,9 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.util.Log;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import static com.cyanogenmod.settings.device.IrGestureManager.*;
 
 public class IrGestureSensor implements ScreenStateNotifier, SensorEventListener {
@@ -34,7 +37,7 @@ public class IrGestureSensor implements ScreenStateNotifier, SensorEventListener
     private final IrGestureVote mIrGestureVote;
     private final Sensor mSensor;
 
-    private boolean mEnabled;
+    private boolean mEnabled, mScreenOn;
 
     public IrGestureSensor(CMActionsSettings cmActionsSettings, SensorHelper sensorHelper,
                 SensorAction action, IrGestureManager irGestureManager) {
@@ -49,16 +52,26 @@ public class IrGestureSensor implements ScreenStateNotifier, SensorEventListener
 
     @Override
     public void screenTurnedOn() {
-        if (mEnabled) {
-            Log.d(TAG, "Disabling");
-            mSensorHelper.unregisterListener(this);
-            mIrGestureVote.voteForSensors(0);
-            mEnabled = false;
-        }
+        mScreenOn = true;
+        new Timer().schedule(
+            new TimerTask() {
+                @Override
+                public void run() {
+                    if (mEnabled && mScreenOn) {
+                        Log.d(TAG, "Disabling");
+                        mSensorHelper.unregisterListener(IrGestureSensor.this);
+                        mIrGestureVote.voteForSensors(0);
+                        mEnabled = false;
+                    }
+                }
+            },
+            2000
+        );
     }
 
     @Override
     public void screenTurnedOff() {
+        mScreenOn = false;
         if (mCMActionsSettings.isIrWakeupEnabled() && !mEnabled) {
             Log.d(TAG, "Enabling");
             mSensorHelper.registerListener(mSensor, this);
@@ -71,11 +84,12 @@ public class IrGestureSensor implements ScreenStateNotifier, SensorEventListener
     public void onSensorChanged(SensorEvent event) {
         int gesture = (int) event.values[1];
 
-        if (gesture == IR_GESTURE_SWIPE || gesture == IR_GESTURE_APPROACH)
+        if (!mScreenOn && (gesture == IR_GESTURE_SWIPE || gesture == IR_GESTURE_APPROACH))
             mSensorAction.action();
     }
 
     @Override
     public void onAccuracyChanged(Sensor mSensor, int accuracy) {
     }
+
 }
